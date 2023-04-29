@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'education_id',
+        'company_id',
+        'phone',
+        'gender',
+        'hobby',
+        'experience',
+        'image',
+        'message'
     ];
 
     /**
@@ -41,4 +49,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function education()
+    {
+        return $this->hasOne(Education::class, 'id', 'education_id');
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'id', 'company_id');
+    }
 }
